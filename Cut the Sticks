@@ -1,0 +1,15 @@
+public static List<Integer> cutTheSticks(List<Integer> arr) {
+    Collections.sort(arr);
+    List<Integer> remainingSticksCount = new ArrayList<>();
+    int totalSticks = arr.size();
+
+    remainingSticksCount.add(totalSticks);
+
+    for (int i = 1; i < totalSticks; i++) {
+        if (!arr.get(i).equals(arr.get(i - 1))) {
+            remainingSticksCount.add(totalSticks - i);
+        }
+    }
+
+    return remainingSticksCount;
+}
