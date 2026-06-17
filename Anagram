@@ -1,0 +1,25 @@
+public static int anagram(String s) {
+    if (s.length() % 2 != 0) {
+        return -1;
+    }
+
+    int halfLength = s.length() / 2;
+    int[] characterFrequencies = new int[26];
+
+    for (int i = 0; i < halfLength; i++) {
+        characterFrequencies[s.charAt(i) - 'a']++;
+    }
+
+    for (int i = halfLength; i < s.length(); i++) {
+        characterFrequencies[s.charAt(i) - 'a']--;
+    }
+
+    int totalChangesNeeded = 0;
+    for (int frequency : characterFrequencies) {
+        if (frequency > 0) {
+            totalChangesNeeded += frequency;
+        }
+    }
+
+    return totalChangesNeeded;
+}
