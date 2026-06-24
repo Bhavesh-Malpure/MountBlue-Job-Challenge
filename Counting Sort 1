@@ -1,0 +1,16 @@
+public static List<Integer> countingSort(List<Integer> arr) {
+        // Define the fixed size of the frequency array as required by the challenge constraints
+        final int frequencyArraySize = 100;
+        
+        // Initialize the frequency list with zeros
+        List<Integer> frequencyCounts = new ArrayList<>(Collections.nCopies(frequencyArraySize, 0));
+        
+        // Iterate through the input array and increment the count at the corresponding index
+        for (int numberToCount : arr) {
+            int currentCount = frequencyCounts.get(numberToCount);
+            frequencyCounts.set(numberToCount, currentCount + 1);
+        }
+        
+        // Return the final populated frequency array
+        return frequencyCounts;
+    }
