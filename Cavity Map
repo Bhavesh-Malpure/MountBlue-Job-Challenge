@@ -1,0 +1,29 @@
+public static List<String> cavityMap(List<String> grid) {
+        int gridDimensionSize = grid.size();
+        List<String> modifiedGridMap = new ArrayList<>(grid);
+
+        for (int rowIndex = 1; rowIndex < gridDimensionSize - 1; rowIndex++) {
+            StringBuilder currentModifiedRow = new StringBuilder(modifiedGridMap.get(rowIndex));
+
+            for (int columnIndex = 1; columnIndex < gridDimensionSize - 1; columnIndex++) {
+                char currentCellDepth = grid.get(rowIndex).charAt(columnIndex);
+
+                char topCellDepth = grid.get(rowIndex - 1).charAt(columnIndex);
+                char bottomCellDepth = grid.get(rowIndex + 1).charAt(columnIndex);
+                char leftCellDepth = grid.get(rowIndex).charAt(columnIndex - 1);
+                char rightCellDepth = grid.get(rowIndex).charAt(columnIndex + 1);
+
+                if (currentCellDepth > topCellDepth && 
+                    currentCellDepth > bottomCellDepth && 
+                    currentCellDepth > leftCellDepth && 
+                    currentCellDepth > rightCellDepth) {
+                    
+                    currentModifiedRow.setCharAt(columnIndex, 'X');
+                }
+            }
+            
+            modifiedGridMap.set(rowIndex, currentModifiedRow.toString());
+        }
+
+        return modifiedGridMap;
+    }
