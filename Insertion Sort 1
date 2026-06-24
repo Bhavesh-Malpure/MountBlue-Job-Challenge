@@ -1,0 +1,22 @@
+public static void insertionSort1(int n, List<Integer> arr) {
+        int targetElementToInsert = arr.get(n - 1);
+        int currentComparisonIndex = n - 2;
+
+        while (currentComparisonIndex >= 0 && arr.get(currentComparisonIndex) > targetElementToInsert) {
+            arr.set(currentComparisonIndex + 1, arr.get(currentComparisonIndex));
+            
+            for (int elementIndex = 0; elementIndex < n; elementIndex++) {
+                System.out.print(arr.get(elementIndex) + " ");
+            }
+            System.out.println();
+            
+            currentComparisonIndex--;
+        }
+
+        arr.set(currentComparisonIndex + 1, targetElementToInsert);
+        
+        for (int elementIndex = 0; elementIndex < n; elementIndex++) {
+            System.out.print(arr.get(elementIndex) + " ");
+        }
+        System.out.println();
+    }
