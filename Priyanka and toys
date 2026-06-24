@@ -1,0 +1,15 @@
+public static int toys(List<Integer> w) {
+        Collections.sort(w);
+        
+        int totalContainersRequired = 0;
+        int maxWeightAllowedInCurrentContainer = -1;
+        
+        for (int currentToyWeight : w) {
+            if (currentToyWeight > maxWeightAllowedInCurrentContainer) {
+                totalContainersRequired++;
+                maxWeightAllowedInCurrentContainer = currentToyWeight + 4;
+            }
+        }
+        
+        return totalContainersRequired;
+    }
