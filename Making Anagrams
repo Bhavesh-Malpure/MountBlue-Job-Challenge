@@ -1,0 +1,21 @@
+public static int makingAnagrams(String s1, String s2) {
+        int[] letterFrequenciesInFirstString = new int[26];
+        int[] letterFrequenciesInSecondString = new int[26];
+
+        for (int characterIndex = 0; characterIndex < s1.length(); characterIndex++) {
+            int alphabetPosition = s1.charAt(characterIndex) - 'a';
+            letterFrequenciesInFirstString[alphabetPosition]++;
+        }
+
+        for (int characterIndex = 0; characterIndex < s2.length(); characterIndex++) {
+            int alphabetPosition = s2.charAt(characterIndex) - 'a';
+            letterFrequenciesInSecondString[alphabetPosition]++;
+        }
+
+        int totalDeletionsRequired = 0;
+        for (int alphabetPosition = 0; alphabetPosition < 26; alphabetPosition++) {
+            totalDeletionsRequired += Math.abs(letterFrequenciesInFirstString[alphabetPosition] - letterFrequenciesInSecondString[alphabetPosition]);
+        }
+
+        return totalDeletionsRequired;
+    }
