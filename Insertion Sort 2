@@ -1,0 +1,17 @@
+public static void insertionSort2(int n, List<Integer> arr) {
+        for (int i = 1; i < n; i++) {
+            int value = arr.get(i);
+            int j = i - 1;
+
+            while (j >= 0 && arr.get(j) > value) {
+                arr.set(j + 1, arr.get(j));
+                j = j - 1;
+            }
+            arr.set(j + 1, value);
+
+            for (int k = 0; k < n; k++) {
+                System.out.print(arr.get(k) + " ");
+            }
+            System.out.println();
+        }
+    }
