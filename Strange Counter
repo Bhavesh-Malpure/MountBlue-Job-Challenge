@@ -1,0 +1,14 @@
+public static long strangeCounter(long t) {
+        long cycleStartTime = 1;
+        long initialCounterValue = 3;
+
+        while (t >= cycleStartTime + initialCounterValue) {
+            cycleStartTime += initialCounterValue;
+            initialCounterValue *= 2;
+        }
+
+        long timeElapsedInCurrentCycle = t - cycleStartTime;
+        long counterValueAtRequestedTime = initialCounterValue - timeElapsedInCurrentCycle;
+
+        return counterValueAtRequestedTime;
+    }
