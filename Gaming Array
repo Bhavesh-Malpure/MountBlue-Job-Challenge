@@ -1,0 +1,15 @@
+public static String gamingArray(List<Integer> arr) {
+        int moveCount = 0;
+        int currentMaximumValue = Integer.MIN_VALUE;
+        for (int currentElement : arr) {
+            if (currentElement > currentMaximumValue) {
+                currentMaximumValue = currentElement;
+                moveCount++;
+            }
+        }
+        if (moveCount % 2 != 0) {
+            return "BOB";
+        } else {
+            return "ANDY";
+        }
+    }
