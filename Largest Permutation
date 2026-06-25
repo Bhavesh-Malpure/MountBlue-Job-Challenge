@@ -1,0 +1,21 @@
+public static List<Integer> largestPermutation(int k, List<Integer> arr) {
+        int arrayLength = arr.size();
+        int[] elementPositions = new int[arrayLength + 1];
+        for (int currentIndex = 0; currentIndex < arrayLength; currentIndex++) {
+            elementPositions[arr.get(currentIndex)] = currentIndex;
+        }
+        int remainingSwaps = k;
+        for (int currentIndex = 0; currentIndex < arrayLength && remainingSwaps > 0; currentIndex++) {
+            int expectedMaximumValue = arrayLength - currentIndex;
+            if (arr.get(currentIndex) != expectedMaximumValue) {
+                int targetElementPosition = elementPositions[expectedMaximumValue];
+                int currentElementValue = arr.get(currentIndex);
+                arr.set(currentIndex, expectedMaximumValue);
+                arr.set(targetElementPosition, currentElementValue);
+                elementPositions[currentElementValue] = targetElementPosition;
+                elementPositions[expectedMaximumValue] = currentIndex;
+                remainingSwaps--;
+            }
+        }
+        return arr;
+    }
