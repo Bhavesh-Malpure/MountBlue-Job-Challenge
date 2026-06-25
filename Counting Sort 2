@@ -1,0 +1,13 @@
+public static List<Integer> countingSort(List<Integer> arr) {
+        int[] frequencyCounts = new int[100];
+        for (int currentElement : arr) {
+            frequencyCounts[currentElement]++;
+        }
+        List<Integer> sortedResult = new ArrayList<>();
+        for (int valueIndex = 0; valueIndex < frequencyCounts.length; valueIndex++) {
+            for (int repetitionCount = 0; repetitionCount < frequencyCounts[valueIndex]; repetitionCount++) {
+                sortedResult.add(valueIndex);
+            }
+        }
+        return sortedResult;
+    }
