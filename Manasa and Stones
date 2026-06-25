@@ -1,0 +1,10 @@
+public static List<Integer> stones(int n, int a, int b) {
+        SortedSet<Integer> uniquePossibleValues = new TreeSet<>();
+        int stepCount = n - 1;
+        for (int bCount = 0; bCount <= stepCount; bCount++) {
+            int aCount = stepCount - bCount;
+            int finalStoneValue = (aCount * a) + (bCount * b);
+            uniquePossibleValues.add(finalStoneValue);
+        }
+        return new ArrayList<>(uniquePossibleValues);
+    }
