@@ -1,0 +1,14 @@
+public static int maximumToys(List<Integer> prices, int k) {
+        Collections.sort(prices);
+        int purchasedToysCount = 0;
+        int remainingBudget = k;
+        for (int toyPrice : prices) {
+            if (remainingBudget >= toyPrice) {
+                remainingBudget -= toyPrice;
+                purchasedToysCount++;
+            } else {
+                break;
+            }
+        }
+        return purchasedToysCount;
+    }
