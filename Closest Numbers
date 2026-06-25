@@ -1,0 +1,18 @@
+public static List<Integer> closestNumbers(List<Integer> arr) {
+        Collections.sort(arr);
+        int minimumDifference = Integer.MAX_VALUE;
+        List<Integer> closestPairsResult = new ArrayList<>();
+        for (int currentIndex = 0; currentIndex < arr.size() - 1; currentIndex++) {
+            int currentDifference = arr.get(currentIndex + 1) - arr.get(currentIndex);
+            if (currentDifference < minimumDifference) {
+                minimumDifference = currentDifference;
+                closestPairsResult.clear();
+                closestPairsResult.add(arr.get(currentIndex));
+                closestPairsResult.add(arr.get(currentIndex + 1));
+            } else if (currentDifference == minimumDifference) {
+                closestPairsResult.add(arr.get(currentIndex));
+                closestPairsResult.add(arr.get(currentIndex + 1));
+            }
+        }
+        return closestPairsResult;
+    }
