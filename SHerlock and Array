@@ -1,0 +1,16 @@
+public static String balancedSums(List<Integer> arr) {
+        int totalSumOfElements = 0;
+        for (int currentElement : arr) {
+            totalSumOfElements += currentElement;
+        }
+        int runningLeftSum = 0;
+        for (int currentElement : arr) {
+            int runningRightSum = totalSumOfElements - runningLeftSum - currentElement;
+            if (runningLeftSum == runningRightSum) {
+                return "YES";
+            }
+            runningLeftSum += currentElement;
+        }
+        return "NO";
+    }
+    
