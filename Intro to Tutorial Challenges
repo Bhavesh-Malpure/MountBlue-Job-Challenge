@@ -1,0 +1,8 @@
+public static int introTutorial(int V, List<Integer> arr) {
+        for (int currentIndex = 0; currentIndex < arr.size(); currentIndex++) {
+            if (arr.get(currentIndex) == V) {
+                return currentIndex;
+            }
+        }
+        return -1;
+    }
