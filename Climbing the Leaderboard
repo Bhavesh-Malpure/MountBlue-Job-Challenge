@@ -1,0 +1,17 @@
+public static List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
+        List<Integer> uniqueLeaderboardScores = new ArrayList<>();
+        for (int currentScore : ranked) {
+            if (uniqueLeaderboardScores.isEmpty() || uniqueLeaderboardScores.get(uniqueLeaderboardScores.size() - 1) != currentScore) {
+                uniqueLeaderboardScores.add(currentScore);
+            }
+        }
+        List<Integer> calculatedPlayerRankings = new ArrayList<>();
+        int leaderboardSearchIndex = uniqueLeaderboardScores.size() - 1;
+        for (int currentPlayerScore : player) {
+            while (leaderboardSearchIndex >= 0 && currentPlayerScore >= uniqueLeaderboardScores.get(leaderboardSearchIndex)) {
+                leaderboardSearchIndex--;
+            }
+            calculatedPlayerRankings.add(leaderboardSearchIndex + 2);
+        }
+        return calculatedPlayerRankings;
+    }
