@@ -1,0 +1,27 @@
+public static String encryption(String s) {
+        String strippedString = s.replaceAll("\\s+", "");
+        int stringLength = strippedString.length();
+        
+        double squareRootValue = Math.sqrt(stringLength);
+        int rowCount = (int) Math.floor(squareRootValue);
+        int columnCount = (int) Math.ceil(squareRootValue);
+        
+        if (rowCount * columnCount < stringLength) {
+            rowCount = columnCount;
+        }
+        
+        StringBuilder encryptedMessageResult = new StringBuilder();
+        for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+            if (columnIndex > 0) {
+                encryptedMessageResult.append(" ");
+            }
+            for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+                int characterIndex = rowIndex * columnCount + columnIndex;
+                if (characterIndex < stringLength) {
+                    encryptedMessageResult.append(strippedString.charAt(characterIndex));
+                }
+            }
+        }
+        
+        return encryptedMessageResult.toString();
+    }
