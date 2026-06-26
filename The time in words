@@ -1,0 +1,27 @@
+public static String timeInWords(int h, int m) {
+        String[] numberWords = {
+            "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+            "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen",
+            "twenty", "twenty one", "twenty two", "twenty three", "twenty four", "twenty five", 
+            "twenty six", "twenty seven", "twenty eight", "twenty nine"
+        };
+        
+        if (m == 0) {
+            return numberWords[h] + " o' clock";
+        } else if (m == 15) {
+            return "quarter past " + numberWords[h];
+        } else if (m == 30) {
+            return "half past " + numberWords[h];
+        } else if (m == 45) {
+            int nextHourIndex = (h % 12) + 1;
+            return "quarter to " + numberWords[nextHourIndex];
+        } else if (m < 30) {
+            String minutesLabel = (m == 1) ? " minute" : " minutes";
+            return numberWords[m] + minutesLabel + " past " + numberWords[h];
+        } else {
+            int remainingMinutes = 60 - m;
+            int nextHourIndex = (h % 12) + 1;
+            String minutesLabel = (remainingMinutes == 1) ? " minute" : " minutes";
+            return numberWords[remainingMinutes] + minutesLabel + " to " + numberWords[nextHourIndex];
+        }
+    }
