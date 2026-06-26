@@ -1,0 +1,14 @@
+public static int getMinimumCost(int k, int[] c) {
+        Arrays.sort(c);
+        int totalCost = 0;
+        int purchaseCount = 0;
+        int flowersCount = c.length;
+        
+        for (int index = flowersCount - 1; index >= 0; index--) {
+            int previousPurchasesMultiplier = purchaseCount / k;
+            totalCost += (previousPurchasesMultiplier + 1) * c[index];
+            purchaseCount++;
+        }
+        
+        return totalCost;
+    }
