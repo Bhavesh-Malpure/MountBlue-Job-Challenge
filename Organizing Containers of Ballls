@@ -1,0 +1,20 @@
+public static String organizingContainers(List<List<Integer>> container) {
+        int matrixSize = container.size();
+        long[] containerCapacities = new long[matrixSize];
+        long[] ballTypeTotals = new long[matrixSize];
+        for (int containerIndex = 0; containerIndex < matrixSize; containerIndex++) {
+            for (int ballTypeIndex = 0; ballTypeIndex < matrixSize; ballTypeIndex++) {
+                long ballCount = container.get(containerIndex).get(ballTypeIndex);
+                containerCapacities[containerIndex] += ballCount;
+                ballTypeTotals[ballTypeIndex] += ballCount;
+            }
+        }
+        Arrays.sort(containerCapacities);
+        Arrays.sort(ballTypeTotals);
+        for (int matchingIndex = 0; matchingIndex < matrixSize; matchingIndex++) {
+            if (containerCapacities[matchingIndex] != ballTypeTotals[matchingIndex]) {
+                return "Impossible";
+            }
+        }
+        return "Possible";
+    }
