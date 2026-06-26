@@ -1,0 +1,20 @@
+ public static List<Integer> serviceLane(int n, List<List<Integer>> cases) {
+        List<Integer> maximumVehicleSizes = new ArrayList<>();
+        
+        for (List<Integer> currentCase : cases) {
+            int entryIndex = currentCase.get(0);
+            int exitIndex = currentCase.get(1);
+            int minimumWidth = Integer.MAX_VALUE;
+            
+            for (int index = entryIndex; index <= exitIndex; index++) {
+                int currentWidth = width.get(index);
+                if (currentWidth < minimumWidth) {
+                    minimumWidth = currentWidth;
+                }
+            }
+            
+            maximumVehicleSizes.add(minimumWidth);
+        }
+        
+        return maximumVehicleSizes;
+    }
