@@ -1,0 +1,17 @@
+public static List<Integer> missingNumbers(List<Integer> arr, List<Integer> brr) {
+        int[] originalFrequencyCounts = new int[10001];
+        int[] missingFrequencyCounts = new int[10001];
+        for (int currentElement : brr) {
+            originalFrequencyCounts[currentElement]++;
+        }
+        for (int currentElement : arr) {
+            missingFrequencyCounts[currentElement]++;
+        }
+        List<Integer> identifiedMissingNumbers = new ArrayList<>();
+        for (int uniqueValueIndex = 1; uniqueValueIndex <= 10000; uniqueValueIndex++) {
+            if (originalFrequencyCounts[uniqueValueIndex] > missingFrequencyCounts[uniqueValueIndex]) {
+                identifiedMissingNumbers.add(uniqueValueIndex);
+            }
+        }
+        return identifiedMissingNumbers;
+    }
