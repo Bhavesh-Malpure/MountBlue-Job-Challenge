@@ -1,0 +1,23 @@
+public static List<Integer> jimOrders(List<List<Integer>> orders) {
+        int customerCount = orders.size();
+        int[][] deliveryDetails = new int[customerCount][2];
+        for (int customerIndex = 0; customerIndex < customerCount; customerIndex++) {
+            int orderNumber = orders.get(customerIndex).get(0);
+            int preparationTime = orders.get(customerIndex).get(1);
+            int deliveryTime = orderNumber + preparationTime;
+            deliveryDetails[customerIndex][0] = customerIndex + 1;
+            deliveryDetails[customerIndex][1] = deliveryTime;
+        }
+        Arrays.sort(deliveryDetails, (firstCustomer, secondCustomer) -> {
+            if (firstCustomer[1] != secondCustomer[1]) {
+                return Integer.compare(firstCustomer[1], secondCustomer[1]);
+            } else {
+                return Integer.compare(firstCustomer[0], secondCustomer[0]);
+            }
+        });
+        List<Integer> servedCustomerSequence = new ArrayList<>();
+        for (int sortedIndex = 0; sortedIndex < customerCount; sortedIndex++) {
+            servedCustomerSequence.add(deliveryDetails[sortedIndex][0]);
+        }
+        return servedCustomerSequence;
+    }
