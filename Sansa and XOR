@@ -1,0 +1,14 @@
+public static int sansaXor(List<Integer> arr) {
+        int finalXorSum = 0;
+        int listSize = arr.size();
+        
+        if (listSize % 2 == 0) {
+            return 0;
+        }
+        
+        for (int elementIndex = 0; elementIndex < listSize; elementIndex += 2) {
+            finalXorSum ^= arr.get(elementIndex);
+        }
+        
+        return finalXorSum;
+    }
