@@ -1,0 +1,48 @@
+public static String isValid(String s) {
+        int[] characterFrequencies = new int[26];
+        for (int index = 0; index < s.length(); index++) {
+            characterFrequencies[s.charAt(index) - 'a']++;
+        }
+
+        Map<Integer, Integer> frequencyCounts = new HashMap<>();
+        for (int frequency : characterFrequencies) {
+            if (frequency > 0) {
+                frequencyCounts.put(frequency, frequencyCounts.getOrDefault(frequency, 0) + 1);
+            }
+        }
+
+        if (frequencyCounts.size() == 1) {
+            return "YES";
+        }
+
+        if (frequencyCounts.size() > 2) {
+            return "NO";
+        }
+
+        int firstFrequency = 0;
+        int secondFrequency = 0;
+        int firstFrequencyCount = 0;
+        int secondFrequencyCount = 0;
+
+        for (Map.Entry<Integer, Integer> entry : frequencyCounts.entrySet()) {
+            if (firstFrequency == 0) {
+                firstFrequency = entry.getKey();
+                firstFrequencyCount = entry.getValue();
+            } else {
+                secondFrequency = entry.getKey();
+                secondFrequencyCount = entry.getValue();
+            }
+        }
+
+        if ((firstFrequency == 1 && firstFrequencyCount == 1) || 
+            (secondFrequency == 1 && secondFrequencyCount == 1)) {
+            return "YES";
+        }
+
+        if ((firstFrequency - secondFrequency == 1 && firstFrequencyCount == 1) || 
+            (secondFrequency - firstFrequency == 1 && secondFrequencyCount == 1)) {
+            return "YES";
+        }
+
+        return "NO";
+    }
