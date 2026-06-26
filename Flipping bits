@@ -1,0 +1,4 @@
+public static long flippingBits(long n) {
+        long maximumThirtyTwoBitValue = 4294967295L;
+        return n ^ maximumThirtyTwoBitValue;
+    }
