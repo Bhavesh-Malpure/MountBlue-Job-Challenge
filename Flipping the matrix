@@ -1,0 +1,20 @@
+public static int flippingMatrix(List<List<Integer>> matrix) {
+        int n = matrix.size() / 2;
+        int maxSum = 0;
+        
+        // Iterate over the upper-left quadrant (n x n submatrix)
+        for (int r = 0; r < n; r++) {
+            for (int c = 0; c < n; c++) {
+                // For each position (r, c) in the top-left quadrant, find the maximum 
+                // value among its 4 possible mirror reflections across rows and columns
+                int topLeft = matrix.get(r).get(c);
+                int topRight = matrix.get(r).get(2 * n - 1 - c);
+                int bottomLeft = matrix.get(2 * n - 1 - r).get(c);
+                int bottomRight = matrix.get(2 * n - 1 - r).get(2 * n - 1 - c);
+                
+                maxSum += Math.max(Math.max(topLeft, topRight), Math.max(bottomLeft, bottomRight));
+            }
+        }
+        
+        return maxSum;
+    }
