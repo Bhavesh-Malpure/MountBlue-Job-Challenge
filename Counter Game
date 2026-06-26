@@ -1,0 +1,14 @@
+public static String counterGame(long n) {
+        // Count the number of set bits (1s) in n - 1
+        // Each 1 bit in (n - 1) corresponds to a turn made in the game.
+        int totalTurns = Long.bitCount(n - 1);
+        
+        // Louise always starts, so she plays on odd turns (1st, 3rd, etc.)
+        // If the total number of turns is odd, Louise made the final move and wins.
+        // If the total number of turns is even, Richard wins.
+        if (totalTurns % 2 == 1) {
+            return "Louise";
+        } else {
+            return "Richard";
+        }
+    }
