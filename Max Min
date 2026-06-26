@@ -1,0 +1,11 @@
+public static int maxMin(int k, List<Integer> arr) {
+        Collections.sort(arr);
+        int minimumUnfairness = Integer.MAX_VALUE;
+        for (int index = 0; index <= arr.size() - k; index++) {
+            int currentUnfairness = arr.get(index + k - 1) - arr.get(index);
+            if (currentUnfairness < minimumUnfairness) {
+                minimumUnfairness = currentUnfairness;
+            }
+        }
+        return minimumUnfairness;
+    }
