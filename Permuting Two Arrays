@@ -1,0 +1,10 @@
+public static String twoArrays(int k, List<Integer> A, List<Integer> B) {
+        Collections.sort(A);
+        Collections.sort(B, Collections.reverseOrder());
+        for (int arrayIndex = 0; arrayIndex < A.size(); arrayIndex++) {
+            if (A.get(arrayIndex) + B.get(arrayIndex) < k) {
+                return "NO";
+            }
+        }
+        return "YES";
+    }
