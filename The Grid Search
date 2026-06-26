@@ -1,0 +1,29 @@
+public static String gridSearch(List<String> G, List<String> P) {
+        int totalGridRows = G.size();
+        int totalGridCols = G.get(0).length();
+        int patternRows = P.size();
+        int patternCols = P.get(0).length();
+
+        // Loop through all possible top-left starting positions in the grid
+        for (int r = 0; r <= totalGridRows - patternRows; r++) {
+            for (int c = 0; c <= totalGridCols - patternCols; c++) {
+                
+                boolean patternMatches = true;
+                
+                // Check if the pattern matches starting from (r, c)
+                for (int pr = 0; pr < patternRows; pr++) {
+                    String gridRowSubstring = G.get(r + pr).substring(c, c + patternCols);
+                    if (!gridRowSubstring.equals(P.get(pr))) {
+                        patternMatches = false;
+                        break;
+                    }
+                }
+                
+                if (patternMatches) {
+                    return "YES";
+                }
+            }
+        }
+        
+        return "NO";
+    }
