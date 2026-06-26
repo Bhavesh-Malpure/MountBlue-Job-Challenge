@@ -1,0 +1,19 @@
+public static int superDigit(String n, int k) {
+        // Calculate the sum of digits of the initial string n
+        long initialDigitSum = 0;
+        for (int i = 0; i < n.length(); i++) {
+            initialDigitSum += n.charAt(i) - '0';
+        }
+        
+        // Multiply by k to get the total sum of the concatenated string p
+        long totalSum = initialDigitSum * k;
+        
+        // Find the super digit using the digital root property
+        // A number's super digit is equivalent to totalSum % 9
+        if (totalSum == 0) {
+            return 0;
+        }
+        
+        long remainder = totalSum % 9;
+        return (remainder == 0) ? 9 : (int) remainder;
+    }
